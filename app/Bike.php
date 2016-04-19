@@ -15,4 +15,9 @@ class Bike extends Model
     {
     	return $this->belongsTo('BikeUsageTracker\BikeType', 'bike_type_id');
     }
+
+    public function components()
+    {
+    	return $this->hasMany('BikeUsageTracker\Component');
+    }
 }
