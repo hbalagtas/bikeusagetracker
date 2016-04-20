@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BikeType extends Model
 {
 	public $timestamps = false;
+	protected $fillable = ['name'];
 
     public function bikes()
     {

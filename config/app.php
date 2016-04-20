@@ -207,7 +207,11 @@ return [
 
         'User' => BikeUsageTracker\User::class,
         'Bike' => BikeUsageTracker\Bike::class,
+        'BikeBrand' => BikeUsageTracker\BikeBrand::class,
         'BikeType' => BikeUsageTracker\BikeType::class,
+        'Component' => BikeUsageTracker\Component::class,
+        'ComponentBrand' => BikeUsageTracker\ComponentBrand::class,
+        'ComponentType' => BikeUsageTracker\ComponentType::class,
 
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,

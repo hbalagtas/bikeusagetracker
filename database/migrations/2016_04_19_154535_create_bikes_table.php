@@ -16,6 +16,7 @@ class CreateBikesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');  
             $table->integer('bike_type_id')->references('id')->on('bike_types');
+            $table->integer('bike_brand_id')->references('id')->on('bike_brands');
             $table->string('name');
             $table->longtext('notes');
             $table->decimal('weight', 4, 2);            
