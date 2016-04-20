@@ -156,6 +156,9 @@ return [
         BikeUsageTracker\Providers\EventServiceProvider::class,
         BikeUsageTracker\Providers\RouteServiceProvider::class,
 
+        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -205,6 +208,9 @@ return [
         'User' => BikeUsageTracker\User::class,
         'Bike' => BikeUsageTracker\Bike::class,
         'BikeType' => BikeUsageTracker\BikeType::class,
+
+        'Form'      => Collective\Html\FormFacade::class,
+        'HTML'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];
