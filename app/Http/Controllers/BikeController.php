@@ -2,12 +2,23 @@
 
 namespace BikeUsageTracker\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use BikeUsageTracker\Bike;
 use BikeUsageTracker\Http\Requests;
+use Illuminate\Http\Request;
 
 class BikeController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,8 +57,8 @@ class BikeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {        
+        return Bike::findOrFail($id);
     }
 
     /**

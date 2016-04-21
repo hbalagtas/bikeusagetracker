@@ -11,10 +11,21 @@
 |
 */
 
+// Authentication routes...
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['web']], function () {
+//Route::auth();
+
+Route::group(['middleware' => ['auth','web']], function () {
 	Route::resource('biketype', 'BikeTypeController');
+	Route::resource('bikes', 'BikeController');
 });
+
+
+Route::get('/home', 'HomeController@index');
