@@ -4,7 +4,9 @@ namespace BikeUsageTracker\Http\Controllers\Auth;
 
 use BikeUsageTracker\Http\Controllers\Controller;
 use BikeUsageTracker\User;
+use Iamstuartwilson\StravaApi;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,12 +73,20 @@ class AuthController extends Controller
         ]);
     }
 
-    public function getLogin()
+    public function showLoginForm()
     {
-        return view('auth.login');
+        $clientId = env('STRAVA_CLIENT_ID');
+        $clientSecret = env('STRAVA_CLIENT_SECRET');
+        $api = new StravaApi(
+            $clientId,
+            $clientSecret
+        );
+        $redirect = 'http://strava.app/authorize';
+        $url = $api->authenticationUrl($redirect, $approvalPrompt = 'auto', $scope = null, $state = null);
+        return view('auth.login', compact('url'));
     }
 
-    public function postLogin(Request $request)
+    public function login(Request $request)
     {
         $this->validateLogin($request);
 
@@ -105,5 +115,40 @@ class AuthController extends Controller
         }
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
+        return view('auth.register');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::guard($this->getGuard())->login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
     }
 }

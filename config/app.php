@@ -215,6 +215,8 @@ return [
 
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
+        'StravaApi' => Iamstuartwilson\StravaApi::class,
+        'Input'     => Illuminate\Support\Facades\Input::class,
     ],
 
 ];
