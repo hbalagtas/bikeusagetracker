@@ -71,6 +71,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i>Register
                                 </button>
+
+                                <a href="{{$url}}"><img src="{{ URL::to('/images') }}/ConnectWithStrava.png"></a>
                             </div>
                         </div>
                     </form>

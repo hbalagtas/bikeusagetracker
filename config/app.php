@@ -212,6 +212,7 @@ return [
         'Component' => BikeUsageTracker\Component::class,
         'ComponentBrand' => BikeUsageTracker\ComponentBrand::class,
         'ComponentType' => BikeUsageTracker\ComponentType::class,
+        'StravaProfile' => BikeUsageTracker\StravaProfile::class,
 
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,

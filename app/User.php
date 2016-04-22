@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('BikeUsageTracker\Bike');
     }
+
+    public function stravaprofile()
+    {
+        return $this->hasOne('BikeUsageTracker\StravaProfile', 'user_id');
+    }
 }
