@@ -42,26 +42,23 @@ Route::get('authorize', function(){
 	$accessToken = $response->access_token;
 	$athlete = $response->athlete;
 
-	/*$api->setAccessToken($accessToken);
-	$athlete = $api->get('athlete');
-	*/
 	$user = User::firstOrNew([
 		'name' => $athlete->firstname . ' ' . $athlete->lastname,
 		'email' => $athlete->email,
-		'unit' => 'km',
-		'strava_access_token' => $accessToken
+		'unit' => 'km'
 		]);
 	$user->save();
+	if ( is_null( $user->stravaprofile ) ){
+		$strava_profile = new BikeUsageTracker\StravaProfile;
+		$strava_profile->strava_id = $athlete->id;
+		$strava_profile->access_token = $accessToken;
+		$strava_profile->strava_data = serialize($response);
+		$strava_profile->save();
+		$user->stravaprofile()->save($strava_profile);
+	}	
 
 	Auth::login($user);
-
 	return view('home');
-
-	\Cache::forget('stravaapi');
-	\Cache::put('stravaapi', $api, 50000);
-	var_dump($accessToken);
-	
-	var_dump($athlete);
 });
 
 Route::get('strava', function(){

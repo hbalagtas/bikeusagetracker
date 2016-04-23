@@ -14,6 +14,7 @@ class CreateBikesTable extends Migration
     {
         Schema::create('bikes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('strava_bike_id');
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');  
             $table->integer('bike_type_id')->references('id')->on('bike_types');
             $table->integer('bike_brand_id')->references('id')->on('bike_brands');

@@ -53,7 +53,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
-                                <a href="{{$url}}"><img src="images/LoginWithStrava.png" /></a>
+                                <a href="{{$url}}"><img src="{{ URL::to('/images') }}/LogInWithStrava.png"></a>
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
