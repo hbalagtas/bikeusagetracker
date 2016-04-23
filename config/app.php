@@ -159,6 +159,8 @@ return [
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -217,6 +219,8 @@ return [
         'HTML'      => Collective\Html\HtmlFacade::class,
         'StravaApi' => Iamstuartwilson\StravaApi::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
