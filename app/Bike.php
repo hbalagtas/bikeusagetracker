@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bike extends Model
 {
-    protected $fillable = ['user_id', 'bike_type_id', 'bike_brand_id', 'name', 'notes', 'weight', 'distance'];
+    protected $fillable = ['user_id', 'bike_type_id', 'bike_brand_id', 'name', 'model', 'notes', 'weight', 'distance'];
     public function user()
     {
     	return $this->belongsTo('BikeUsageTracker\User', 'user_id');

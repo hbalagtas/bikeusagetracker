@@ -55,6 +55,7 @@ Route::get('authorize', function(){
 		$strava_profile->strava_data = serialize($response);
 		$strava_profile->save();
 		$user->stravaprofile()->save($strava_profile);
+		$user->stravaprofile()->importbikes();
 	}	
 
 	Auth::login($user);

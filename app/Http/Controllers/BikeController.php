@@ -26,7 +26,7 @@ class BikeController extends Controller
      */
     public function index()
     {
-        //
+        return 'sorry no view yet';
     }
 
     /**
