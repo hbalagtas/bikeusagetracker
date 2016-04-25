@@ -11,6 +11,6 @@ class BikeBrand extends Model
 
     public function bikes()
     {
-    	return $this->hasMany('BikeU sageTracker\Bike');
+    	return $this->hasMany('BikeUsageTracker\Bike');
     }
 }

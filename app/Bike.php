@@ -19,7 +19,7 @@ class Bike extends Model
 
     public function brand()
     {
-        return $this->belongsTo('BikeUsageTracker\BikeType', 'bike_brand_id');
+        return $this->belongsTo('BikeUsageTracker\BikeBrand', 'bike_brand_id');
     }
 
     public function components()

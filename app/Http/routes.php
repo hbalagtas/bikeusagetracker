@@ -20,14 +20,15 @@ Route::auth();
 Route::group(['middleware' => ['auth','web']], function () {
 	Route::resource('biketype', 'BikeTypeController');
 	Route::resource('bikes', 'BikeController');
+
+	Route::get('select-components/{bike_id}', function($bike_id){
+		echo $bike_id;
+		
+	});
 });
 
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/strava-test', function(){
-	
-});
 
 Route::get('authorize', function(){
 	$code = Input::get('code');
@@ -42,27 +43,27 @@ Route::get('authorize', function(){
 	$accessToken = $response->access_token;
 	$athlete = $response->athlete;
 
-	$user = User::firstOrNew([
+	$user = User::firstOrCreate([
 		'name' => $athlete->firstname . ' ' . $athlete->lastname,
 		'email' => $athlete->email,
 		'unit' => 'km'
-		]);
-	$user->save();
+		]);	
+	
 	if ( is_null( $user->stravaprofile ) ){
 		$strava_profile = new BikeUsageTracker\StravaProfile;
 		$strava_profile->strava_id = $athlete->id;
 		$strava_profile->access_token = $accessToken;
 		$strava_profile->strava_data = serialize($response);
 		$strava_profile->save();
-		$user->stravaprofile()->save($strava_profile);
-		$user->stravaprofile()->importbikes();
+		$user->stravaprofile()->save($strava_profile);		
+		$strava_profile->importbikes();
 	}	
 
-	Auth::login($user);
+	Auth::login($user);	
 	return view('home');
 });
 
-Route::get('strava', function(){
+/*Route::get('strava', function(){
 	\Cache::forget('stravaapi');
 	$clientId = env('STRAVA_CLIENT_ID');
 	$clientSecret = env('STRAVA_CLIENT_SECRET');
@@ -74,4 +75,4 @@ Route::get('strava', function(){
 	$redirect = 'http://strava.app/authorize';
 	$url = $api->authenticationUrl($redirect, $approvalPrompt = 'auto', $scope = null, $state = null);
 	echo "<a href='{$url}'>Log in using Strava</a>";
-});
+});*/
