@@ -23,6 +23,7 @@ class CreateBikesTable extends Migration
             $table->longtext('notes');
             $table->decimal('weight', 4, 2);            
             $table->decimal('distance', 10, 2);
+            $table->boolean('private');            
             $table->timestamps();          
         });
     }

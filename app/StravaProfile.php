@@ -24,7 +24,7 @@ class StravaProfile extends Model
     public function importbikes()
     {
     	$data = unserialize($this->strava_data);
-    	foreach($data->athlete->bikes as $bike){
+    	foreach($data->bikes as $bike){
     		if ( Bike::where('strava_bike_id', $bike->id)->count() == 0){
     			$b = new Bike;
     			$b->strava_bike_id = $bike->id;
@@ -37,8 +37,9 @@ class StravaProfile extends Model
                 $bike_info = $api->get('/gear/' . $b->strava_bike_id);
                 $b->notes = $bike_info->description;
                 $b->model = $bike_info->model_name;
+                $b->private = true;
                 $brand = BikeBrand::firstOrCreate(['name' => ucwords($bike_info->brand_name)]);
-                $b->brand()->associate($brand);
+                $b->brand()->associate($brand);                
                 //1 -> mtb, 2 -> cross, 3 -> road, 4 -> time trial
                 switch ($bike_info->frame_type) {
                     case 1:
@@ -60,6 +61,6 @@ class StravaProfile extends Model
     			$this->user->bikes()->save($b);
     		}    		
     	}
-    	return $data->athlete->bikes;
+    	return $data->bikes;
     }
 }

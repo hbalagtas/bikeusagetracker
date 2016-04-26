@@ -22,8 +22,10 @@ Route::group(['middleware' => ['auth','web']], function () {
 	Route::resource('bikes', 'BikeController');
 
 	Route::get('select-components/{bike_id}', function($bike_id){
-		echo $bike_id;
-		
+		#echo $bike_id;
+		$bike = Bike::findOrFail($bike_id);
+		$componenttypes = ComponentType::all();
+		return view('select-components', compact('bike', 'componenttypes'));
 	});
 });
 
@@ -60,7 +62,7 @@ Route::get('authorize', function(){
 		$strava_profile = new BikeUsageTracker\StravaProfile;
 		$strava_profile->strava_id = $athlete->id;
 		$strava_profile->access_token = $accessToken;
-		$strava_profile->strava_data = serialize($response);
+		$strava_profile->strava_data = serialize($response->athlete);
 		$strava_profile->save();
 		$user->stravaprofile()->save($strava_profile);		
 		$strava_profile->importbikes();
