@@ -45,10 +45,17 @@ Route::get('authorize', function(){
 
 	$user = User::firstOrCreate([
 		'name' => $athlete->firstname . ' ' . $athlete->lastname,
-		'email' => $athlete->email,
-		'unit' => 'km'
+		'email' => $athlete->email
+		
 		]);	
 	
+	if ($athlete->measurement_preference == 'meters' ){
+		$user->unit = 'km';
+	} else {
+		$user->unit = 'mi';
+	}
+	$user->save();
+
 	if ( is_null( $user->stravaprofile ) ){
 		$strava_profile = new BikeUsageTracker\StravaProfile;
 		$strava_profile->strava_id = $athlete->id;
