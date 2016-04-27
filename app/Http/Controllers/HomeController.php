@@ -35,7 +35,7 @@ class HomeController extends Controller
                 $athlete = $api->get('/athletes/' . $stravaprofile->strava_id);
                 $stravaprofile->strava_data = serialize($athlete);
                 $stravaprofile->save();
-                $stravaprofile->importbikes();
+                $stravaprofile->importstravabikes();
                 \Log::info('Updated strava profile');
             } else {
                 $interval = 30 - $stravaprofile->updated_at->diffInMinutes();
