@@ -20,7 +20,8 @@ Route::auth();
 Route::group(['middleware' => ['auth','web']], function () {
 	Route::resource('biketype', 'BikeTypeController');
 	Route::resource('bikes', 'BikeController');
-
+	Route::resource('components', 'ComponentController');
+	
 	Route::get('select-components/{bike_id}', function($bike_id){		
 		$bike = Bike::findOrFail($bike_id);
 		$componenttypes = ComponentType::all();
