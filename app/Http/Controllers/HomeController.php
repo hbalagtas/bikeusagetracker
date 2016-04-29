@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         //Check if user has strava profile and update bikes after 30-60mins?
         $stravaprofile = Auth::user()->stravaprofile;
+        
         if ( !is_null($stravaprofile) ){
             if ( $stravaprofile->updated_at->diffInMinutes() > 30 ){
                 $api = new StravaApi;

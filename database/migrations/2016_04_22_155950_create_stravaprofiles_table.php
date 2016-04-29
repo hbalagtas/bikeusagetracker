@@ -14,8 +14,8 @@ class CreateStravaprofilesTable extends Migration
     {
         Schema::create('strava_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('strava_id');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade')->index();
+            $table->string('strava_id')->unique();
             $table->string('access_token');
             $table->longtext('strava_data');
             $table->timestamps();

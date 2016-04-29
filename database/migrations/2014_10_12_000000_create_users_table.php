@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('unit');            
             $table->rememberToken();
             $table->timestamps();
+            $table->index('email');
         });
     }
 

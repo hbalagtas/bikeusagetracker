@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class ComponentController extends Controller
 {
+    public $layout = 'layouts.app';
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,11 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        return Component::all();
+        $components = Component::all();
+        $content = 'test';
+        $this->layout->content = $content;
+        #$view = View::make('entries.index')->with('entries', $entries);
+        #return $this->layout->content = $view->render();
     }
 
     /**

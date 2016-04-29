@@ -8,7 +8,7 @@
                 <div class="panel-heading">Select components for {{$bike->brand->name}} - {{$bike->model}}</div>
 
                 <div class="panel-body">    
-                        
+                        {!! Form::open(['route' => 'select-components']) !!}
                         @foreach ($componenttypes as $type)                          
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">          
                         <div class="checkbox inline">                            
@@ -20,6 +20,7 @@
                         </div>                               
                         
                         @endforeach   
+                        {!! Form::close() !!}
                 </div>
             </div>
         </div>
