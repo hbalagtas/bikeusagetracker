@@ -75,14 +75,7 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        $clientId = env('STRAVA_CLIENT_ID');
-        $clientSecret = env('STRAVA_CLIENT_SECRET');
-        $api = new StravaApi(
-            $clientId,
-            $clientSecret
-        );
-        $redirect = 'http://strava.app/authorize';
-        $url = $api->authenticationUrl($redirect, $approvalPrompt = 'auto', $scope = null, $state = null);
+        $url = getStravaOauthUrl();
         return view('auth.login', compact('url'));
     }
 
@@ -93,14 +86,7 @@ class AuthController extends Controller
      */
     public function showRegistrationForm()
     {
-        $clientId = env('STRAVA_CLIENT_ID');
-        $clientSecret = env('STRAVA_CLIENT_SECRET');
-        $api = new StravaApi(
-            $clientId,
-            $clientSecret
-        );
-        $redirect = 'http://strava.app/authorize';
-        $url = $api->authenticationUrl($redirect, $approvalPrompt = 'auto', $scope = null, $state = null);
+        $url = getStravaOauthUrl();
 
         if (property_exists($this, 'registerView')) {
             return view($this->registerView);

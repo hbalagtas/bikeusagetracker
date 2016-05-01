@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4f6d5c996eec59279a9b8f69117f86a",
+    "hash": "8cf5b9091ded06701e3ce1da9e2bc3ea",
     "content-hash": "b1d0b11c37c511e79899fd9bfbbf07a6",
     "packages": [
         {
             "name": "appzcoder/crud-generator",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appzcoder/crud-generator.git",
-                "reference": "4363192ba2c910057088a48a42fecd719eb0c262"
+                "reference": "f1dee5a78f963fada17bb0d003b988e3137c4fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/4363192ba2c910057088a48a42fecd719eb0c262",
-                "reference": "4363192ba2c910057088a48a42fecd719eb0c262",
+                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/f1dee5a78f963fada17bb0d003b988e3137c4fe9",
+                "reference": "f1dee5a78f963fada17bb0d003b988e3137c4fe9",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "laravel",
                 "laravel crud generator"
             ],
-            "time": "2016-02-06 19:14:18"
+            "time": "2016-04-26 18:29:26"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -445,16 +445,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.30",
+            "version": "v5.2.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ecfbbfbf96105439cc9a40bc78277bdb0268e34d"
+                "reference": "2fa2797604bf54b06faf7bb139a9fc0d66826fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ecfbbfbf96105439cc9a40bc78277bdb0268e34d",
-                "reference": "ecfbbfbf96105439cc9a40bc78277bdb0268e34d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2fa2797604bf54b06faf7bb139a9fc0d66826fea",
+                "reference": "2fa2797604bf54b06faf7bb139a9fc0d66826fea",
                 "shasum": ""
             },
             "require": {
@@ -570,7 +570,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-04-19 19:12:18"
+            "time": "2016-04-27 13:02:09"
         },
         {
             "name": "laravelcollective/html",
@@ -628,16 +628,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.21",
+            "version": "1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "35a83cf67d80d7040f306c77b0a84b9fbcc4fbfb"
+                "reference": "bd73a91703969a2d20ab4bfbf971d6c2cbe36612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/35a83cf67d80d7040f306c77b0a84b9fbcc4fbfb",
-                "reference": "35a83cf67d80d7040f306c77b0a84b9fbcc4fbfb",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/bd73a91703969a2d20ab4bfbf971d6c2cbe36612",
+                "reference": "bd73a91703969a2d20ab4bfbf971d6c2cbe36612",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-04-22 10:56:25"
+            "time": "2016-04-28 06:53:12"
         },
         {
             "name": "maximebf/debugbar",

@@ -11,17 +11,30 @@ use Illuminate\Support\Facades\Auth;
 
 class StravaProfileController extends Controller
 {
-    public function authorizestrava(Request $request)
+
+    public $client_id;
+    public $client_secret;
+    public $api;
+
+    public function __construct()
     {
-        #$code = Input::get('code');
-        $code = $request->get('code');
-        $clientId = env('STRAVA_CLIENT_ID');
-        $clientSecret = env('STRAVA_CLIENT_SECRET');
+        $this->client_id = env('STRAVA_CLIENT_ID');
+        $this->client_secret = env('STRAVA_CLIENT_SECRET');
+        $this->api = new StravaApi(
+            $this->client_id,
+            $this->client_secret
+        );
+    }
+    
+    public function authorizestrava(Request $request)
+    {        
+        $code = $request->get('code');     
         
         $api = \Cache::get('stravaapi', new StravaApi(
-            $clientId,
-            $clientSecret
+            $this->client_id,
+            $this->client_secret
         ));
+
         $response = $api->tokenExchange($code);
         $accessToken = $response->access_token;
         $athlete = $response->athlete;
